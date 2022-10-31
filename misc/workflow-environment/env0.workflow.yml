@@ -1,24 +1,24 @@
 environments:
   rootService1:
     name: rootService1
-    templateName: 'null-resource'
+    templateName: 'chaim-null-resource-env0'
   rootService2:
     name: rootService2
-    templateName: 'null-resource'
+    templateName: 'chaim-null-resource-env0'
   middleService1:
     name: middleService1
-    templateName: 'null-resource'
+    templateName: 'chaim-null-resource-env0'
     needs:
       - rootService1
       - rootService2
   middleService2:
     name: middleService2
-    templateName: 'null-resource'
+    templateName: 'chaim-null-resource-env0'
     needs:
       - rootService1
       - rootService2
   finalService:
     name: finalService
-    templateName: 'null-resource'
+    templateName: 'chaim-null-resource-env0'
     needs:
       - middleService1
