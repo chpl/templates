@@ -2,6 +2,7 @@ environments:
   rootService1:
     name: rootService1
     templateName: 'chaim-null-resource-env0'
+    revision: ${rev}
   rootService2:
     name: rootService2
     templateName: 'chaim-null-resource-env0'
