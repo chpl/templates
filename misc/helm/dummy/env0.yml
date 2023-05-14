@@ -6,6 +6,7 @@ deploy:
       after:
         - awsv2 eks --region=us-east-1 update-kubeconfig --name kushield
         - "sed -i 's/command: aws/command: awsv2/g' ~/.kube/config"
+        - kubectl create namespace $HELM_NAMESPACE --dry-run=client -o yaml | kubectl apply -f -
 
 destroy:
   steps:
@@ -13,3 +14,5 @@ destroy:
       after:
         - awsv2 eks --region=us-east-1 update-kubeconfig --name kushield
         - "sed -i 's/command: aws/command: awsv2/g' ~/.kube/config"
+  onSuccess:
+    - kubectl delete namespace $HELM_NAMESPACE
