@@ -3,16 +3,19 @@ deploy:
   steps:
     terraformInit:
       before:
-        - eval "cat <<EOF                                                                                                                                                                                                         ─╯
+        - |
+          eval "cat <<EOF                                                                                                                                                                                                         ─╯
           $(<main.tf.template)
           EOF
           " > main.tf
+
 
 destroy:
   steps:
     terraformInit:
       before:
-        - eval "cat <<EOF                                                                                                                                                                                                         ─╯
+        - |
+          eval "cat <<EOF                                                                                                                                                                                                         ─╯
           $(<main.tf.template)
           EOF
           " > main.tf
