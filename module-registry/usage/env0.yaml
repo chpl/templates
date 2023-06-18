@@ -1,21 +1,23 @@
-version: 1
+version: 2
 deploy:
   steps:
     terraformInit:
       before:
-        - |
-          eval "cat <<EOF                                                                                                                                                                                                         ─╯
-          $(<main.tf.template)
-          EOF
-          " > main.tf
+        - name: "Create main.tf"
+          run: |
+            eval "cat <<EOF                                                                                                                                                                                                         ─╯
+            $(<main.tf.template)
+            EOF
+            " > main.tf
 
 
 destroy:
   steps:
     terraformInit:
       before:
-        - |
-          eval "cat <<EOF                                                                                                                                                                                                         ─╯
-          $(<main.tf.template)
-          EOF
-          " > main.tf
+        - name: "Create main.tf"
+          run: |
+            eval "cat <<EOF                                                                                                                                                                                                         ─╯
+            $(<main.tf.template)
+            EOF
+            " > main.tf
