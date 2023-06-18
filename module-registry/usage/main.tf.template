@@ -1,5 +1,5 @@
 module "gh_private_null" {
-  source  = "api-pr12306.dev.env0.com/737bb6df-1d96-4cec-825b-1e957dc54b95/gh_private/null"
+  source  = "api-pr12306.dev.env0.com/${ENV0_ORGANIZATION_ID}/gh_private/null"
   version = "1.0.0"
   name    = "private"
 }
@@ -9,7 +9,7 @@ output "private_output_name" {
 }
 
 module "gh_public_null" {
-  source  = "api-pr12306.dev.env0.com/737bb6df-1d96-4cec-825b-1e957dc54b95/gh_public/null"
+  source  = "api-pr12306.dev.env0.com/${ENV0_ORGANIZATION_ID}/gh_public/null"
   version = "1.0.0"
   name    = "public"
 }

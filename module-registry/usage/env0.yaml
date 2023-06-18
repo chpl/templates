@@ -1,0 +1,18 @@
+version: 1
+deploy:
+  steps:
+    terraformInit:
+      before:
+        - eval "cat <<EOF                                                                                                                                                                                                         ─╯
+          $(<main.tf.template)
+          EOF
+          " > main.tf
+
+destroy:
+  steps:
+    terraformInit:
+      before:
+        - eval "cat <<EOF                                                                                                                                                                                                         ─╯
+          $(<main.tf.template)
+          EOF
+          " > main.tf
