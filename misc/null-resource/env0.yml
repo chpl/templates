@@ -2,4 +2,5 @@ version: 2
 destroy:
   steps:
     setupVariables:
-      after: exit 0
+      after:
+        - exit 0
