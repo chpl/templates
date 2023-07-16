@@ -3,4 +3,4 @@ destroy:
   steps:
     setupVariables:
       after:
-        - exit 0
+        - exit 1
