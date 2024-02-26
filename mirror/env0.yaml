@@ -4,7 +4,7 @@ deploy:
     terraformInit:
       after:
         - name: Get providers versions
-          run: terraform version -json > providers.json
+          run: terraform version -json > versions.json
         - name: Validate versions
           run: |
               set -e
