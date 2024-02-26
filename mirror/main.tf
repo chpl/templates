@@ -4,7 +4,7 @@ terraform {
     // mirrored provider with version constraint
     aws = {
       source  = "hashicorp/aws"
-      version = "> 5"
+      version = ">= 4, < 5"
     }
 
     // mirrored provider without version constraint
@@ -22,6 +22,7 @@ terraform {
       # when running with terraform `hashicorp/null` is `registry.terraform.io/hashicorp/null`
       # and `registry.opentofu.org/hashicorp/null` won't be mirrored
       source = "registry.opentofu.org/hashicorp/null"
+      version = "3.2.1"
     }
   }
 }

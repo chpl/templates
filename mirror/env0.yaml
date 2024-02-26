@@ -1,0 +1,14 @@
+version: 2
+deploy:
+  steps:
+    terraformInit:
+      after:
+        - name: Get providers versions
+          run: terraform versions -json > providers.json
+        - name: Validate versions
+          run: |
+              set -e
+              jq -e '.provider_selections["registry.opentofu.org/hashicorp/null"] == "3.2.1"' versions.json # fixed version
+              jq -e '.provider_selections | has("registry.terraform.io/env0/env0")' versions.json # no constrain so we just check it's there
+              jq -e '.provider_selections["registry.terraform.io/hashicorp/aws"] == "4.67.0"' versions.json # latest 4.x version
+              jq -e '.provider_selections["registry.terraform.io/spacelift-io/spacelift"] == "1.9.3"' versions.json # fixed version
