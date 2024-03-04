@@ -11,10 +11,11 @@ deploy:
               echo "Found imported resources" >> $ENV0_STEP_SUMMARY
               tofu plan -generate-config-out ${ENV0_ROOT_DIR}/generated.tf
               ls -la ${ENV0_ROOT_DIR}/
-              echo "### Generated tofu config\n\n" > $ENV0_STEP_CONTENT
-              echo "```hcl" >> $ENV0_STEP_CONTENT
+              echo '### Generated tofu config > $ENV0_STEP_CONTENT
+              echo '' > $ENV0_STEP_CONTENT
+              echo '```hcl' >> $ENV0_STEP_CONTENT
               cat ${ENV0_ROOT_DIR}/generated.tf >> $ENV0_STEP_CONTENT
-              echo "```" >> $ENV0_STEP_CONTENT
+              echo '```' >> $ENV0_STEP_CONTENT
               exit 1
             else
               echo "No import operations found" >> $ENV0_STEP_SUMMARY
