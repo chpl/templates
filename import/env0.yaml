@@ -16,5 +16,3 @@ deploy:
             else
               echo "No import operations found" >> $ENV0_STEP_SUMMARY
             fi
-            
-          
