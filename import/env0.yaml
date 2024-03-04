@@ -1,0 +1,20 @@
+version: 2
+deploy:
+  steps:
+    terraformPlan:
+      after:
+        - name: Import - Generate tofu config
+          run: |
+            if grep -q "importing" ${ENV0_TF_PLAN_JSON};
+              echo "Found imported resources" >> $ENV0_STEP_SUMMARY
+              tofu plan -generate-config-out generated.tf
+              echo "### Generated tofu config\n\n" > $ENV0_STEP_CONTENT
+              echo "```hcl" >> $ENV0_STEP_CONTENT
+              cat generated.tf >> $ENV0_STEP_CONTENT
+              echo "```" >> $ENV0_STEP_CONTENT
+              exit 1
+            else
+              echo "No import operations found" >> $ENV0_STEP_SUMMARY
+            fi
+            
+          
