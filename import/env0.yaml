@@ -8,11 +8,11 @@ deploy:
           run: |
             if grep -q "importing" ${ENV0_TF_PLAN_JSON}; then
               echo "Found imported resources" >> $ENV0_STEP_SUMMARY
-              tofu plan -generate-config-out ${ENV0_PLUGIN_PATH}/generated.tf
+              tofu plan -generate-config-out ${ENV0_ROOT_DIR}/generated.tf
               ls -la 
               echo "### Generated tofu config\n\n" > $ENV0_STEP_CONTENT
               echo "```hcl" >> $ENV0_STEP_CONTENT
-              cat ${ENV0_PLUGIN_PATH}/generated.tf >> $ENV0_STEP_CONTENT
+              cat ${ENV0_ROOT_DIR}/generated.tf >> $ENV0_STEP_CONTENT
               echo "```" >> $ENV0_STEP_CONTENT
               exit 1
             else
