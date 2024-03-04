@@ -1,5 +1,5 @@
 version: 2
-shell: bash˚π
+shell: bash
 deploy:
   steps:
     terraformPlan:
