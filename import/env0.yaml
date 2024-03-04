@@ -3,14 +3,13 @@ shell: bash
 deploy:
   steps:
     terraformPlan:
-      after:
+      before:
         - name: Import - Generate tofu config
           run: |
             set -e
-            if grep -q "importing" ${ENV0_TF_PLAN_JSON}; then
+            tofu plan -generate-config-out=${ENV0_ROOT_DIR}/generated.tf
+            if [ -e ${ENV0_ROOT_DIR}/generated.tf ]; then
               echo "Found imported resources" >> $ENV0_STEP_SUMMARY
-              tofu plan -generate-config-out ${ENV0_ROOT_DIR}/generated.tf
-              ls -la ${ENV0_ROOT_DIR}/
               echo '### Generated tofu config' > $ENV0_STEP_CONTENT
               echo '' > $ENV0_STEP_CONTENT
               echo '```hcl' >> $ENV0_STEP_CONTENT
@@ -18,5 +17,5 @@ deploy:
               echo '```' >> $ENV0_STEP_CONTENT
               exit 1
             else
-              echo "No import operations found" >> $ENV0_STEP_SUMMARY
+              echo "No import operations" >> $ENV0_STEP_SUMMARY
             fi
